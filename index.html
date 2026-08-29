@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enviar Reseña por WhatsApp</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center h-screen p-4">
+  <div class="bg-white p-6 rounded-2xl shadow-xl w-full max-w-sm text-center">
+    <h2 class="text-xl font-bold text-gray-800 mb-2">Enviar Enlace de Reseña</h2>
+    <p class="text-sm text-gray-500 mb-4">Introduce el número del cliente para enviarle el enlace por WhatsApp</p>
+    
+    <input type="tel" id="telefono" placeholder="Ej: 34600000000" 
+           class="w-full p-3 border border-gray-300 rounded-lg mb-4 text-center text-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+    
+    <button onclick="enviarWhatsApp()" 
+            class="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-3 rounded-lg shadow-md transition">
+      Abrir WhatsApp y Enviar
+    </button>
+  </div>
+
+  <script>
+    function enviarWhatsApp() {
+      const numero = document.getElementById('telefono').value.replace(/[^0-9]/g, '');
+      if (!numero) {
+        alert('Por favor introduce un número de teléfono válido con prefijo internacional.');
+        return;
+      }
+      
+      // Enlace de Google Reseñas formateado para URL
+      const enlaceResena = "https://search.google.com/local/writereview?placeid=ChIJb3S6Z8pLSQ0R6O4eRhWTemY";
+      const texto = encodeURIComponent("¡Hola! Déjanos tu opinión sobre nuestro servicio aquí: " + enlaceResena);
+      
+      const urlWhatsApp = https://wa.me/${numero}?text=${texto};
+      window.location.href = urlWhatsApp;
+    }
+  </script>
+</body>
+</html>
